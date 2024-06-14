@@ -6,8 +6,8 @@ def seed_data():
     conn = sqlite3.connect('database.db')
     c = conn.cursor()
     products = [
-        ("Bamboo toothbrushes", "By switching to bamboo toothbrushes, you not only minimize your plastic waste but also support sustainable practices and reduce your carbon footprint.", 1000),
-        ("Reusable straws", "Natural Reusable Bamboo Straw. Single-use plastic straws are harmful to the environment. Opt for a natural reusable bamboo straw instead of single-use straw", 900),
+        ("Product 1", "Description 1", 10.99),
+        ("Product 2", "Description 2", 9.99),
         ("Product 3", "Eco-friendly product 3", 12.99),
         ("Product 4", "Eco-friendly product 4", 8.99),
         ("Product 5", "Eco-friendly product 5", 11.99),
@@ -53,7 +53,8 @@ def main():
                     if choice == "1":
                         view_products()
                     elif choice == "2":
-                        search_product()
+                        product_name = input("Enter product name to search: ")
+                        search_product(product_name)  # Pass the product_name argument
                     elif choice == "3":
                         add_to_cart(user.id)
                     elif choice == "4":
@@ -70,7 +71,6 @@ def main():
             break
         else:
             print("Invalid choice. Please try again.")
-            choice = input("Enter your choice: ")
             
 if __name__ == "__main__":
     main()
