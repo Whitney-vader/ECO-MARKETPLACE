@@ -5,7 +5,7 @@
 #### By Whitney Atsenga Makotsi 
 
 ## Description
-The growing global concern for environmental sustainability has created a demand for eco-friendly products. However, consumers often face challenges in finding authentic and environmentally impactful options. Eco-Marketplace is the one-stop shop for authentic eco-friendly products that empower one to live a greener lifestyle.
+The growing global concern for environmental sustainability has created a demand for eco-friendly products. However, consumers often face challenges in finding authentic and environmentally impactful options. Eco-Marketplace is a command-line interface application than enables users to view eco-friendly products, search for products, add them to their cart and rate the products.
 
 ## Installation
 You use git clone to be able to download the documents in the GitHub
