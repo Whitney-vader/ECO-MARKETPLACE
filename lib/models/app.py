@@ -1,23 +1,47 @@
-import controllers
+import sqlite3
+from faker import Faker
+from controllers import register_user, login_user, view_products, search_product, add_to_cart, view_cart, rate_product
+
+def seed_data():
+    conn = sqlite3.connect('database.db')
+    c = conn.cursor()
+    products = [
+        ("Product 1", "Eco-friendly product 1", 10.99),
+        ("Product 2", "Eco-friendly product 2", 9.99),
+        ("Product 3", "Eco-friendly product 3", 12.99),
+        ("Product 4", "Eco-friendly product 4", 8.99),
+        ("Product 5", "Eco-friendly product 5", 11.99),
+        ("Product 6", "Eco-friendly product 6", 10.99),
+        ("Product 7", "Eco-friendly product 7", 9.99),
+        ("Product 8", "Eco-friendly product 8", 12.99),
+        ("Product 9", "Eco-friendly product 9", 8.99),
+        ("Product 10", "Eco-friendly product 10", 11.99),
+    ]
+    c.execute("DELETE FROM Products")
+    for product in products:
+        c.execute("INSERT INTO Products (name, description, price) VALUES (?,?,?)", product)
+    conn.commit()
+    conn.close()
+    print("Database seeded with sample data")
 
 def main():
     while True:
-        print("Eco-Marketplace CLI")
+        print("Eco-Marketplace")
         print("1. Register")
         print("2. Login")
         print("3. Exit")
         choice = input("Enter your choice: ")
-        
         if choice == "1":
             username = input("Enter username: ")
             email = input("Enter email: ")
             password = input("Enter password: ")
-            controllers.register_user(username, email, password)
+            register_user(username, email, password)
         elif choice == "2":
             username = input("Enter username: ")
             password = input("Enter password: ")
-            user = controllers.login_user(username, password)
+            user = login_user(username, password)
             if user:
+                print("Login successful!")
                 while True:
                     print("1. View products")
                     print("2. Search for a product")
@@ -26,33 +50,16 @@ def main():
                     print("5. Rate a product")
                     print("6. Logout")
                     choice = input("Enter your choice: ")
-                    
                     if choice == "1":
-                        products = controllers.get_all_products()
-                        for product in products:
-                            print(product)
-                            print(product)
-                            print(product)
+                        view_products()
                     elif choice == "2":
-                        name = input("Enter product name to search: ")
-                        products = controllers.search_product(name)
-                        if products:
-                            for product in products:
-                                print(product)
-                        else:
-                            print("No products found with that name.")
+                        search_product()
                     elif choice == "3":
-                        product_id = input("Enter product ID to add to cart: ")
-                        quantity = input("Enter quantity: ")
-                        controllers.add_to_cart(user[0], product_id, quantity)
+                        add_to_cart(user.id)
                     elif choice == "4":
-                        cart_items = controllers.get_cart_items(user[0])
-                        for item in cart_items:
-                            print(item)
+                        view_cart(user.id)
                     elif choice == "5":
-                        product_id = input("Enter product ID to rate: ")
-                        rating = input("Enter rating: ")
-                        controllers.rate_product(user[0], product_id, rating)
+                        rate_product()
                     elif choice == "6":
                         break
                     else:
@@ -63,6 +70,7 @@ def main():
             break
         else:
             print("Invalid choice. Please try again.")
-
+            choice = input("Enter your choice: ")
+            
 if __name__ == "__main__":
     main()
