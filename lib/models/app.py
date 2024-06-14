@@ -54,13 +54,15 @@ def main():
                         view_products()
                     elif choice == "2":
                         product_name = input("Enter product name to search: ")
-                        search_product(product_name)  # Pass the product_name argument
+                        search_product(product_name)
                     elif choice == "3":
                         add_to_cart(user.id)
                     elif choice == "4":
                         view_cart(user.id)
                     elif choice == "5":
-                        rate_product()
+                        product_id = int(input("Enter product ID to rate: "))
+                        rating = int(input("Enter your rating (1-5): "))
+                        rate_product(user.id, product_id, rating)  # Pass the user_id, product_id, and rating arguments
                     elif choice == "6":
                         break
                     else:
