@@ -6,8 +6,8 @@ def seed_data():
     conn = sqlite3.connect('database.db')
     c = conn.cursor()
     products = [
-        ("Product 1", "Eco-friendly product 1", 10.99),
-        ("Product 2", "Eco-friendly product 2", 9.99),
+        ("Bamboo toothbrushes", "By switching to bamboo toothbrushes, you not only minimize your plastic waste but also support sustainable practices and reduce your carbon footprint.", 1000),
+        ("Reusable straws", "Natural Reusable Bamboo Straw. Single-use plastic straws are harmful to the environment. Opt for a natural reusable bamboo straw instead of single-use straw", 900),
         ("Product 3", "Eco-friendly product 3", 12.99),
         ("Product 4", "Eco-friendly product 4", 8.99),
         ("Product 5", "Eco-friendly product 5", 11.99),
