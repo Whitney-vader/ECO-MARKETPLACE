@@ -1,5 +1,4 @@
 import sqlite3
-from faker import Faker
 from controllers import register_user, login_user, view_products, search_product, add_to_cart, view_cart, rate_product
 
 def seed_data():

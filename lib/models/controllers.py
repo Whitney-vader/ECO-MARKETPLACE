@@ -1,5 +1,4 @@
 import sqlite3
-import hashlib
 from models import User
 
 def create_tables():
